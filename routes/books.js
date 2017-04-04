@@ -7,7 +7,7 @@ const router = express.Router();
 const pg = require('pg')
 const humps = require('humps')
 // YOUR CODE HERE
-router.get('/books', function(req, res, next) {
+router.get('/', function(req, res, next) {
     knex('books')
         .orderBy('title', 'asc')
         .then((books) => {
@@ -29,7 +29,7 @@ router.get('/books/:id', function(req, res, next) {
 
         })
 })
-router.post('/books', function(req, res, next) {;
+router.post('/', function(req, res, next) {;
     let book = req.body
     knex('books')
         .insert(
@@ -40,7 +40,7 @@ router.post('/books', function(req, res, next) {;
             res.send(humps.camelizeKeys(data[0]))
         })
 })
-router.patch('/books/:id', function(req, res, next) {
+router.patch('/:id', function(req, res, next) {
     let id = req.params.id
     let newData = req.body
     knex('books')
@@ -51,7 +51,7 @@ router.patch('/books/:id', function(req, res, next) {
             res.send(humps.camelizeKeys(data)[0])
         })
 })
-router.delete('/books/:id', function(req, res, next) {
+router.delete('/:id', function(req, res, next) {
     let id = req.params.id
     knex('books')
         .returning(['title', 'author', 'genre', 'description', 'cover_url'])

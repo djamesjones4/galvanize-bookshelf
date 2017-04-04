@@ -6,7 +6,7 @@ const knex = require('../knex')
 const router = express.Router();
 const humps = require('humps')
 const bcrypt = require('bcrypt')
-const saltRound = 10
+const saltRound = 8
 const boom = require('boom')
 // YOUR CODE HERE
 router.post('/users', (req, res, next) => {
