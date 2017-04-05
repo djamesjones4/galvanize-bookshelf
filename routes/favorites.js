@@ -44,20 +44,19 @@ router.get('/check?', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     if (req.cookies.token) {
-        let newBook = req.body.bookId
-        knex.raw("select setval('favorites_id_seq', (select max(id) from favorites))").then(
-            knex('favorites')
-            .returning('*')
-            .insert({
-                book_id: newBook,
-                user_id: 1
-            })
-            .then((data) => {
-                delete data[0].created_at
-                delete data[0].updated_at
-                res.send(humps.camelizeKeys(data[0]))
-            })
-        )
+      let newBook = req.body.bookId
+        knex.raw("select setval('favorites_id_seq', (select max(id) from favorites))")
+            .then(
+                knex('favorites')
+                .returning('*')
+                .insert({
+                    book_id: newBook,
+                    user_id: 1
+                })
+                .then((data) => {
+                    res.send(humps.camelizeKeys(data[0]))
+                })
+            )
     } else {
         return next(boom.create(401, "Unauthorized"))
     }
@@ -69,8 +68,6 @@ router.delete('/', (req, res, next) => {
         knex('favorites')
             .where('book_id', delBook)
             .then((data) => {
-                delete data[0].created_at
-                delete data[0].updated_at
                 delete data[0].id
                 let deleted = humps.camelizeKeys(data[0])
                 res.send(deleted)
