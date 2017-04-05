@@ -30,7 +30,7 @@ router.post('/users', (req, res, next) => {
         })
     // if (email === ''){
     //   res.sendStatus(400)
-    //   // res.done('Email must not be blank')
+      // res.done('Email must not be blank')
     // }
     // else if (req.body.password === '')
     //   res.sendStatus(400)
