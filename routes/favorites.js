@@ -44,6 +44,8 @@ router.get('/check?', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     if (req.cookies.token) {
+      //     let payload = jwt.verify(req.cookies.token, process.env.JWT_KEY)
+      // console.log(payload);
       let newBook = req.body.bookId
         knex.raw("select setval('favorites_id_seq', (select max(id) from favorites))")
             .then(
