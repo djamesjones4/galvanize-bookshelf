@@ -31,7 +31,7 @@ router.post('/', (req, res, next) => {
             let match = bcrypt.compareSync(req.body.password, user.hashed_password)
             if (match) {
                 delete user.hashed_password
-                var token = jwt.sign('user', process.env.JWT_KEY)
+                var token = jwt.sign(user, process.env.JWT_KEY)
                 res.cookie('token', token, {
                     httpOnly: true
                 })
