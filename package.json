@@ -10,7 +10,6 @@
     "start": "nodemon server.js",
     "test": "mocha",
     "knex": "knex",
-    "heroku-postbuild": "knex migrate:rollback;  knex migrate:latest; knex seed:run;",
     "nodemon": "nodemon server.js"
   },
   "repository": {
