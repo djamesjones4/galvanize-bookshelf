@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   // create table
-  return knex.schema.createTable('books', (table)=> {
+  return knex.schema.createTable('books', (table) => {
     table.increments()
     table.string('title').notNullable().defaultTo('');
     table.string('author').notNullable().defaultTo('')
