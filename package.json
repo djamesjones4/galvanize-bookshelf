@@ -7,10 +7,10 @@
     "knex": "knex",
     "lint": "eslint  --ignore-pattern public/js/vendor",
     "nf": "nf start",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "mocha",
     "knex": "knex",
-    "nodemon": "nodemon server.js"
+    "nodemon": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -40,8 +40,6 @@
     "knex": "^0.11.7",
     "morgan": "^1.7.0",
     "pg": "^6.0.0",
-    "sqlite3": "^3.1.8",
-    "nodemon": "^1.11.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
