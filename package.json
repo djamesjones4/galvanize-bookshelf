@@ -11,7 +11,7 @@
     "test": "mocha",
     "knex": "knex",
     "heroku-postbuild": "knex migrate:rollback;  knex migrate:latest; knex seed:run;",
-    "nodemon": "nodem server.js"
+    "nodemon": "nodemon server.js"
   },
   "repository": {
     "type": "git",
