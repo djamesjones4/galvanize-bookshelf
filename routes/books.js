@@ -19,12 +19,14 @@ router.get('/', function(req, res, next) {
 
 })
 
-router.get('/books/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
+  console.log('in books by id route');
     let id = req.params.id
     knex('books')
         .where('id', id)
         .orderBy('title', 'asc')
         .then((books) => {
+          // console.log(books[0]);
             res.send(humps.camelizeKeys(books[0]))
 
         })
