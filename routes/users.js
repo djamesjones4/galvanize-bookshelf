@@ -8,6 +8,8 @@ const humps = require('humps')
 const bcrypt = require('bcrypt')
 const saltRound = 8
 const boom = require('boom')
+const jwt = require('jsonwebtoken')
+
 // YOUR CODE HERE
 router.post('/', (req, res, next) => {
     let email = req.body.email
@@ -40,6 +42,15 @@ router.post('/', (req, res, next) => {
             'hashed_password': saltHash
         })
         .then((data) => {
+          const jwtToken = jwt.sign({
+          id: id,
+          firstName: first,
+          lastName: last,
+          email: email
+        }, process.env.JWT_KEY)
+        res.cookie('token', jwtToken, {
+          httpOnly: true
+        })
             res.send(humps.camelizeKeys(data[0]))
         })
 
