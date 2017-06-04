@@ -47,7 +47,7 @@ router.post('/', (req, res, next) => {
           firstName: first,
           lastName: last,
           email: email
-        }, process.env.JWT_KEY)
+        }, 'secret')
         res.cookie('token', jwtToken, {
           httpOnly: true
         })
